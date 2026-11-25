@@ -24,7 +24,7 @@ h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); line-height: 1; letter-spacing: -.04
 .featured-card { display: grid; grid-template-columns: 1.2fr .8fr; margin-bottom: 22px; }
 .featured-card img { height: 100%; min-height: 480px; object-fit: cover; }
 .featured-content { padding: 44px 38px; display: flex; flex-direction: column; justify-content: center; }
-.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding-bottom: 100px; }
+.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding-bottom: 48px; }
 .project-card img { aspect-ratio: 4 / 3; object-fit: cover; }
 .project-info { padding: 18px 18px 22px; }
 .category { display: block; font-size: .78rem; color: #666; margin-bottom: 8px; }
@@ -32,6 +32,8 @@ h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); line-height: 1; letter-spacing: -.04
 .project-info h2 { font-size: 1.35rem; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 10px; }
 .featured-content p, .project-info p { color: #555; }
 .featured-card:hover h2, .project-card:hover h2 { text-decoration: underline; text-underline-offset: .15em; text-decoration-thickness: 2px; }
+
+.more-link { display: inline-block; margin-bottom: 90px; font-size: 1.1rem; font-weight: 700; text-decoration: underline; text-underline-offset: .25em; }
 
 /* inner pages */
 .page { padding: 140px 0 90px; }
@@ -47,6 +49,9 @@ h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); line-height: 1; letter-spacing: -.04
 figcaption { font-size: .9rem; color: #666; margin-top: 8px; }
 .gallery.three { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
 .gallery.three img, .gallery.three video { aspect-ratio: 3 / 2; object-fit: cover; }
+.drawings { gap: 48px 22px; }
+.drawings figcaption { max-width: 60ch; }
+.drawings strong { color: #111; }
 .framed { border: 1px solid #e8e8e8; }
 
 /* about, contact */
