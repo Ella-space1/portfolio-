@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>XENOLOG Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="map">
+  <header class="main-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title">XENOLOG👽</a>
+      <nav class="nav-menu">
+        <a href="community.html">COMMUNITY</a>
+        <a href="map.html" aria-current="page">MAP</a>
+        <a href="publish.html">PUBLISH</a>
+        <a href="news.html">NEWS</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+<div id="map"></div>
+  </main>
+  <footer class="note">School project by <a href="../xenolog.html">Ella Lee</a>. All numbers, posts, and news on this site are fictional samples.</footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map', { zoomControl: false, worldCopyJump: true }).setView([22, 10], 2);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    const icon = (name, size) => L.icon({ iconUrl: 'images/' + name + '.svg', iconSize: size, iconAnchor: [size[0] / 2, size[1]], popupAnchor: [0, -size[1]] });
+    const alien = icon('alien', [34, 41]), ufo = icon('ufo', [48, 31]);
+    [
+      { at: [52.3676, 4.9041], name: 'Amsterdam', icon: alien },
+      { at: [37.5503, 126.9971], name: 'Seoul', icon: ufo },
+      { at: [40.7128, -74.006], name: 'New York City', icon: ufo }
+    ].forEach(p => L.marker(p.at, { icon: p.icon, alt: p.name }).addTo(map).bindPopup('<strong>' + p.name + '</strong>'));
+  </script>
+</body>
+</html>

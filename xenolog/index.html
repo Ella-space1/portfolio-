@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>XENOLOG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title">XENOLOG👽</a>
+      <nav class="nav-menu">
+        <a href="community.html">COMMUNITY</a>
+        <a href="map.html">MAP</a>
+        <a href="publish.html">PUBLISH</a>
+        <a href="news.html">NEWS</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+<div id="loading" class="loading"><div>XENO<br>LOG👽</div></div>
+    <div class="dashboard">
+      <div class="stat big"><h2>Total Users</h2><div class="main-number">1,203,540</div></div>
+      <div id="globe" role="img" aria-label="Rotating globe with sighting locations"></div>
+      <div class="stats-right">
+        <div class="stat big"><h2>Reports</h2><div class="main-number">+32,875</div><div>This month</div></div>
+        <div class="stat"><h2>Growth Rate</h2><div class="main-number">+17%</div><div>Compared to last month</div></div>
+        <div class="stat"><h2>Report Types</h2><div>UFO Sighting (62%), Alien Trace (25%), Other (13%)</div></div>
+        <div class="stat"><h2>Daily Reports</h2><div class="main-number">1,284</div><div>US (61%), France (17%), China (12%), Brazil (10%)</div></div>
+      </div>
+    </div>
+  </main>
+  <footer class="note">School project by <a href="../xenolog.html">Ella Lee</a>. All numbers, posts, and news on this site are fictional samples.</footer>
+  <script src="https://unpkg.com/globe.gl@2.35.0"></script>
+  <script>
+    const loading = document.getElementById('loading');
+    window.addEventListener('load', () => setTimeout(() => loading.classList.add('done'), 1500));
+
+    const el = document.getElementById('globe');
+    const points = [
+      { lat: 52.3676, lng: 4.9041, name: 'Amsterdam', icon: 'alien' },
+      { lat: 37.5503, lng: 126.9971, name: 'Seoul', icon: 'ufo' },
+      { lat: 40.7128, lng: -74.006, name: 'New York City', icon: 'ufo' }
+    ];
+    try {
+      const globe = Globe()(el)
+        .width(el.clientWidth).height(el.clientWidth)
+        .globeImageUrl('images/globe.png')
+        .backgroundColor('rgba(0,0,0,0)')
+        .showAtmosphere(false)
+        .htmlElementsData(points)
+        .htmlAltitude(0.03)
+        .htmlElement(d => {
+          const i = document.createElement('img');
+          i.src = 'images/' + d.icon + '.svg';
+          i.alt = d.name;
+          i.style.cssText = 'width:34px;background:#E6FF00;border:2px solid #111;border-radius:50%;padding:5px;aspect-ratio:1;object-fit:contain';
+          return i;
+        });
+      globe.pointOfView({ lat: 20, lng: -30, altitude: 1.9 });
+      const ctl = globe.controls();
+      ctl.autoRotate = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+      ctl.autoRotateSpeed = 0.5;
+      ctl.enableZoom = false;
+      window.addEventListener('resize', () => globe.width(el.clientWidth).height(el.clientWidth));
+    } catch (err) { console.error(err); }
+  </script>
+</body>
+</html>
